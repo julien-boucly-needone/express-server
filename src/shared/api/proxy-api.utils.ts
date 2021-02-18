@@ -1,4 +1,4 @@
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 export const proxyHandler = (): ProxyHandler<any> => ({
@@ -6,11 +6,14 @@ export const proxyHandler = (): ProxyHandler<any> => ({
         const origMethod = target[propKey];
         return (...args: any): any => {
             const that: any = this;
-            const result = origMethod.apply(that, args).pipe(
-                catchError((error) => throwError({
-                    ...error,
-                    errorMessage: error.response.message,
-                })),
+            const result: Observable<any> = origMethod.apply(that, args).pipe(
+                catchError((error) => {
+                    console.error(error);
+
+                    return throwError({
+                        ...error,
+                    });
+                })
             );
             return result;
         };

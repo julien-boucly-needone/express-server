@@ -1,6 +1,10 @@
 import StatusCodes from 'http-status-codes';
 import { Request, Response as ExpressRes, Router } from 'express';
 import { ApiService } from '@shared/api/api.service';
+import FormData from "formdata-node"
+
+// Hack for FormData
+(global as any).FormData = FormData;
 
 const router = Router();
 const { OK } = StatusCodes;
@@ -15,7 +19,6 @@ const apiService = new ApiService();
 router.post('/send', async (req: Request, res: ExpressRes): Promise<void> => {
     const { email, content } = req.body as unknown as { email: string, content: string };
 
-    console.log({ email, content });
     const result = await apiService.pluginsApi.pluginsControllerPlugins({
         pluginsDtoIn: {
             body: content,
@@ -23,9 +26,7 @@ router.post('/send', async (req: Request, res: ExpressRes): Promise<void> => {
         }
     }).toPromise();
 
-    console.log(result);
-
-    return res.status(OK).end();
+    return res.status(OK).json(result).end();
 });
 
 /******************************************************************************

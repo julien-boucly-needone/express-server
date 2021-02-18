@@ -37,7 +37,7 @@ export class PluginsApi extends BaseAPI {
         };
 
         return this.request<PluginsDtoOut>({
-            path: '/plugins',
+            path: '/api/plugins',
             method: 'POST',
             headers,
             body: pluginsDtoIn,
