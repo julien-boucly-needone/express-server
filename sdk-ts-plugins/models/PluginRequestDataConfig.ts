@@ -26,11 +26,6 @@ export interface PluginRequestDataConfig {
      */
     url: string;
     /**
-     * @type {number}
-     * @memberof PluginRequestDataConfig
-     */
-    port?: number;
-    /**
      * @type {string}
      * @memberof PluginRequestDataConfig
      */
