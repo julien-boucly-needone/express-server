@@ -11,19 +11,33 @@
  * Do not edit the class manually.
  */
 
+import {
+    MethodHttp,
+} from './';
+
 /**
  * @export
- * @interface PluginsDtoIn
+ * @interface PluginRequestDataConfig
  */
-export interface PluginsDtoIn {
+export interface PluginRequestDataConfig {
     /**
      * @type {string}
-     * @memberof PluginsDtoIn
+     * @memberof PluginRequestDataConfig
      */
-    email: string;
+    url: string;
+    /**
+     * @type {number}
+     * @memberof PluginRequestDataConfig
+     */
+    port?: number;
     /**
      * @type {string}
-     * @memberof PluginsDtoIn
+     * @memberof PluginRequestDataConfig
      */
-    body: string;
+    name: string;
+    /**
+     * @type {MethodHttp}
+     * @memberof PluginRequestDataConfig
+     */
+    method: MethodHttp;
 }

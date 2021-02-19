@@ -13,12 +13,12 @@
 
 /**
  * @export
- * @interface PluginsDtoOut
+ * @interface LogDataModel
  */
-export interface PluginsDtoOut {
+export interface LogDataModel {
     /**
      * @type {string}
-     * @memberof PluginsDtoOut
+     * @memberof LogDataModel
      */
-    email: string;
+    dataToLog: string;
 }

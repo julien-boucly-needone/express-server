@@ -14,12 +14,11 @@
 import { Observable } from 'rxjs';
 import { BaseAPI, HttpHeaders, throwIfNullOrUndefined } from '../runtime';
 import {
-    PluginsDtoIn,
-    PluginsDtoOut,
+    PluginRequestDataDtoIn,
 } from '../models';
 
-export interface PluginsControllerPluginsRequest {
-    pluginsDtoIn: PluginsDtoIn;
+export interface PluginsControllerRequestDataRequest {
+    pluginRequestDataDtoIn: PluginRequestDataDtoIn;
 }
 
 /**
@@ -29,18 +28,18 @@ export class PluginsApi extends BaseAPI {
 
     /**
      */
-    pluginsControllerPlugins = ({ pluginsDtoIn }: PluginsControllerPluginsRequest): Observable<PluginsDtoOut> => {
-        throwIfNullOrUndefined(pluginsDtoIn, 'pluginsControllerPlugins');
+    pluginsControllerRequestData = ({ pluginRequestDataDtoIn }: PluginsControllerRequestDataRequest): Observable<void> => {
+        throwIfNullOrUndefined(pluginRequestDataDtoIn, 'pluginsControllerRequestData');
 
         const headers: HttpHeaders = {
             'Content-Type': 'application/json',
         };
 
-        return this.request<PluginsDtoOut>({
+        return this.request<void>({
             path: '/api/plugins',
             method: 'POST',
             headers,
-            body: pluginsDtoIn,
+            body: pluginRequestDataDtoIn,
         });
     };
 
