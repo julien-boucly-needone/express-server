@@ -5,6 +5,10 @@ document.addEventListener(
     var ele = event.target;
     if (ele.matches("#send-email-btn")) {
       sendEmail();
+    } else if (ele.matches("#request-data-get-users-bubble-btn")) {
+      sendRequestDataGetUsersBubble();
+    } else if (ele.matches("#request-data-log-data-btn")) {
+      sendRequestDataLogData();
     }
   },
   false
@@ -20,11 +24,19 @@ function sendEmail() {
   httpPost("/api/email/send", data);
 }
 
+function sendRequestDataLogData() {
+  httpPost("/api/request-data/log-data");
+}
+
+function sendRequestDataGetUsersBubble() {
+  httpPost("/api/request-data/get-user-bubble");
+}
+
 function httpGet(path) {
   return fetch(path, getOptions("GET"));
 }
 
-function httpPost(path, data) {
+function httpPost(path, data = undefined) {
   return fetch(path, getOptions("POST", data));
 }
 

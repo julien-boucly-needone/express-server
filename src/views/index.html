@@ -8,15 +8,29 @@
   <body>
     <!-- Send email -->
     <div class="send-email-column send-email-col">
-      <div class="column-header">Add User:</div>
+      <div class="column-header">Envoyer un mail :</div>
       <div>
         <input id="email-input" placeholder="Email" />
       </div>
       <div>
-        <input id="content-input" placeholder="Content" />
+        <textarea id="content-input" placeholder="Content"> </textarea>
       </div>
       <div>
-        <button id="send-email-btn">Add</button>
+        <button id="send-email-btn">Envoyer</button>
+      </div>
+    </div>
+
+    <!-- Request data -->
+    <div class="send-email-column send-email-col">
+      <div class="column-header">Envoyer à l'API une demande de donnée :</div>
+      <div>
+        <button id="request-data-log-data-btn">Request Data - Log data</button>
+      </div>
+      <br />
+      <div>
+        <button id="request-data-get-users-bubble-btn">
+          Request Data - Get users bubble
+        </button>
       </div>
     </div>
   </body>

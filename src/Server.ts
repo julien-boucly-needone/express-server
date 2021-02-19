@@ -10,6 +10,10 @@ import 'express-async-errors';
 
 import BaseRouter from './routes';
 import logger from '@shared/Logger';
+import FormData from "formdata-node"
+
+// Hack for FormData
+(global as any).FormData = FormData;
 
 const app = express();
 const { BAD_REQUEST } = StatusCodes;

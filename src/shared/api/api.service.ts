@@ -23,7 +23,6 @@ export class ApiService {
             },
         ],
     });
-
     private readonly _pluginsApi: PluginsApi = new Proxy(
         new PluginsApi(this._configuration),
         proxyHandler(),
