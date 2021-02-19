@@ -2,7 +2,6 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import path from 'path';
 import helmet from 'helmet';
-import cors from 'cors';
 
 import express, { NextFunction, Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
@@ -49,8 +48,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
         error: err.message,
     });
 });
-
-app.use(cors());
 
 /************************************************************************************
  *                              Serve front-end content

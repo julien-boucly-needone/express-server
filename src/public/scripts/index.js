@@ -9,6 +9,8 @@ document.addEventListener(
       sendRequestDataGetUsersBubble();
     } else if (ele.matches("#request-data-log-data-btn")) {
       sendRequestDataLogData();
+    } else if (ele.matches("#log-users-btn")) {
+      logUsers();
     }
   },
   false
@@ -30,6 +32,11 @@ function sendRequestDataLogData() {
 
 function sendRequestDataGetUsersBubble() {
   httpPost("/api/request-data/get-user-bubble");
+}
+
+async function logUsers() {
+  const result = await httpGet("/api/test/get-users");
+  console.log(await result.json());
 }
 
 function httpGet(path) {
